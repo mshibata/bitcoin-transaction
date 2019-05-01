@@ -200,13 +200,13 @@ function sendTransaction (options) {
     var availableSat = 0;
     for (var i = 0; i < utxos.length; i++) {
       var utxo = utxos[i];
-      if (utxo.confirmations >= options.minConfirmations) {
-        tx.addInput(utxo.txid, utxo.vout);
-        availableSat += utxo.satoshis;
-        ninputs++;
+      // if (utxo.confirmations >= options.minConfirmations) {
+      tx.addInput(utxo.txid, utxo.vout);
+      availableSat += utxo.satoshis;
+      ninputs++;
 
-        if (availableSat >= amtSatoshi) break;
-      }
+      if (availableSat >= amtSatoshi) break;
+      // }
     }
 
     if (availableSat < amtSatoshi) throw "You do not have enough in your wallet to send that much.";
