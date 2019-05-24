@@ -17,7 +17,7 @@ var providers = {
         });
       },
       blockchain: function (addr) {
-        return request.get('https://blockchain.info/q/addressbalance/' + addr + '?confirmations=6').send().then(function (res) {
+        return request.get('https://blockchain.info/q/addressbalance/' + addr).send().then(function (res) {
           return parseFloat(res.body);
         });
       }
@@ -25,6 +25,11 @@ var providers = {
     testnet: {
       blockexplorer: function (addr) {
         return request.get('https://testnet.blockexplorer.com/api/addr/' + addr + '/balance').send().then(function (res) {
+          return parseFloat(res.body);
+        });
+      },
+      blockchain: function (addr) {
+        return request.get('https://testnet.blockchain.info/q/addressbalance/' + addr).send().then(function (res) {
           return parseFloat(res.body);
         });
       }
